@@ -96,14 +96,16 @@ def parse_file( fname, edges, transform, screen, color ):
             else:
                 save_extension(screen, args[0])
             
-        '''elif line == 'circle':
-            add_circle(edges, args[0], args[1], args[2], args[3], 0.001)'''
+        elif line == 'circle':
+            add_circle(edges, float(args[0]), float(args[1]), float(args[2]), float(args[3]),  0.001)
         #adds a circle to the edge matrix - takes 4 parameters (cx, cy, cz, r)  
-        '''elif line == 'hermite':
-            add_curve(edges, args[0], args[1], args[2], args[3],args[4], args[5], args[6], args[7], 0.001,'hermite' )
+        elif line == 'hermite':
+            add_curve(edges, float(args[0]), float(args[1]), float(args[2]), float(args[3]), 
+            float(args[4]), float(args[5]), float(args[6]), float(args[7]), 0.001,'hermite' )
             #adds a hermite curve to the edge matrix - takes 8 parameters (x0, y0, x1, y1, rx0, ry0, rx1, ry1)
             
 
         elif line == 'bezier':
-            add_curve(edges, args[0], args[1], args[2], args[3],args[4], args[5], args[6], args[7], 0.001, 'bezier')'''
+            add_curve(edges, float(args[0]), float(args[1]), float(args[2]), float(args[3]), 
+            float(args[4]), float(args[5]), float(args[6]), float(args[7]), 0.001, 'bezier')
         c+= 1
