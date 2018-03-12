@@ -1,11 +1,46 @@
 from display import *
 from matrix import *
+from math import *
 
 
 def add_circle( points, cx, cy, cz, r, step ):
+    t = 0
+    while t  < 2 * math.pi:
+        add_edge(points, cx + r * math.cos(t), cy + r * math.sin(t), cz,
+        cx + r* math.cos(t + step * 2 * math.pi), cy + r * math.sin(t + step * 2 * math.pi), cz)
+        t += step * 2 * math.pi
     pass
 
+#f(x) = 
 def add_curve( points, x0, y0, x1, y1, x2, y2, x3, y3, step, curve_type ):
+    if curve_type == 'bezier':
+        xm = generate_curve_coefs(x0, x1, x2, x3, 'bezier')
+        ym = generate_curve_coefs(y0, y1, y2, y3, 'bezier')
+        t = 0
+        while t < 1:
+            add_edge(points, 
+            xm[0][0] * t * t * t + xm[0][1] * t * t + xm[0][2] * t + xm[0][3],
+            ym[0][0] * t * t * t + ym[0][1] * t * t + ym[0][2] * t + ym[0][3],
+            0,
+            xm[0][0] * (t + step) * (t + step)* (t + step) + xm[0][1] * (t + step) * (t + step) + xm[0][2] * (t + step) + xm[0][3],
+            ym[0][0] * (t + step) * (t + step)* (t + step) + ym[0][1] * (t + step) * (t + step) + ym[0][2] * (t + step) + ym[0][3],
+            0)
+            t += step
+        
+    elif curve_type == 'hermite':
+        xm = generate_curve_coefs(x0, x1, x2, x3, 'hermite')
+        ym = generate_curve_coefs(y0, y1, y2, y3, 'hermite')
+        t = 0
+        while t < 1:
+            add_edge(points, 
+            xm[0][0] * t * t * t + xm[0][1] * t * t + xm[0][2] * t + xm[0][3],
+            ym[0][0] * t * t * t + ym[0][1] * t * t + ym[0][2] * t + ym[0][3],
+            0,
+            xm[0][0] * (t + step) * (t + step)* (t + step) + xm[0][1] * (t + step) * (t + step) + xm[0][2] * (t + step) + xm[0][3],
+            ym[0][0] * (t + step) * (t + step)* (t + step) + ym[0][1] * (t + step) * (t + step) + ym[0][2] * (t + step) + ym[0][3],
+            0)
+            t += step
+        
     pass
 
 
@@ -117,3 +152,4 @@ def draw_line( x0, y0, x1, y1, screen, color ):
         #end octant 7
     #end octants 2 and 7
 #end draw_line
+

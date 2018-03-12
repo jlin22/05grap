@@ -30,7 +30,6 @@ def make_hermite():
 
 def generate_curve_coefs( p1, p2, p3, p4, t ):
     c = [[p1, p2, p3, p4]]  
-    print_matrix(c)
     if (t=='hermite'):
         matrix_mult(make_hermite(), c)
     elif (t=='bezier'):
