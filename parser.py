@@ -96,7 +96,6 @@ def parse_file( fname, edges, transform, screen, color ):
             else:
                 save_extension(screen, args[0])
             
-        c+= 1
         elif line == 'circle':
             add_circle(edges, args[0], args[1], args[2], args[3], 0.001)
         #adds a circle to the edge matrix - takes 4 parameters (cx, cy, cz, r)  
@@ -107,3 +106,4 @@ def parse_file( fname, edges, transform, screen, color ):
 
         elif line == 'bezier':
             add_curve(edges, args[0], args[1], args[2], args[3],args[4], args[5], args[6], args[7], 'bezier')
+        c+= 1
