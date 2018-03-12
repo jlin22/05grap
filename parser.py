@@ -36,7 +36,7 @@ The file follows the following format:
 	 quit: end parsing
 See the file script for an example of the file format
 """
-ARG_COMMANDS = [ 'line', 'scale', 'move', 'rotate', 'save' ]
+ARG_COMMANDS = [ 'line', 'scale', 'move', 'rotate', 'save', 'circle', 'bezier', 'hermite']
 
 def parse_file( fname, edges, transform, screen, color ):
 
